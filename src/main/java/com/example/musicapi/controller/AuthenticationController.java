@@ -31,16 +31,17 @@ public class AuthenticationController {
         if (userService.findByEmail(email).isPresent()) {
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
-        String imageUrl = imageUploadService.uploadImage(imgFile,"img_user");
+
         User user = new User();
         user.setEmail(email);
         user.setPassword(password);
         user.setBirthDay(birthday);
         user.setName(name);
-        if(imgFile.isEmpty()){
+        if(imgFile == null){
             user.setImageUrl(null);
         }
         else {
+            String imageUrl = imageUploadService.uploadImage(imgFile,"img_user");
             user.setImageUrl(imageUrl);
         }
         return new ResponseEntity<>(userService.saveUser(user), HttpStatus.CREATED);
