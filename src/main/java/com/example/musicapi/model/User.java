@@ -25,7 +25,8 @@ public class User {
     private String password;
     @Column(name = "name",nullable = false)
     private String name;
-
+    private String birthDay;
+    private String imageUrl;
     @Transient
     private String token;
 
