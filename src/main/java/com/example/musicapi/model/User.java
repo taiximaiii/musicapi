@@ -36,4 +36,7 @@ public class User {
     @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "user",orphanRemoval = true)
     private List<Comment> comments = new ArrayList<>();
+    public void addPlaylist(Playlist playlist){
+        this.playlists.add(playlist);
+    }
 }
