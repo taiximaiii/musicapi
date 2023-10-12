@@ -33,7 +33,6 @@ public class TrackServiceImpl implements TrackService{
                     track.getId(),
                     track.getTitle(),
                     track.getGenre(),
-                    track.getDuration(),
                     track.getMp3Url(),
                     track.getImageUrl(),
                     track.getArtist().getName()

@@ -8,5 +8,5 @@ import java.util.List;
 public interface TrackService {
     List<TrackResponse> getAllTrack();
     Track saveTrack( Track track);
-    public void deleteTrack(Long id);
+    void deleteTrack(Long id);
 }

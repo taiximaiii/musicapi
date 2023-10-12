@@ -38,7 +38,6 @@ public class TrackController {
             @RequestParam("imgFile") MultipartFile imgFile,
             @RequestParam("title") String title,
             @RequestParam("genre") String genre,
-            @RequestParam("duration") String duration,
             @RequestParam("artist") String artist,
             @RequestParam(value = "album", required = false) String album
     ) throws IOException {
@@ -48,7 +47,6 @@ public class TrackController {
         Track track = new Track();
         track.setTitle(title);
         track.setGenre(genre);
-        track.setDuration(duration);
         track.setImageUrl(imageUrl);
         track.setMp3Url(mp3Url);
         track.setArtist(artistService.findbyName(artist));
