@@ -1,5 +1,6 @@
 package com.example.musicapi.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -35,4 +36,9 @@ public class Track {
     @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "track", orphanRemoval = true)
     private List<Comment> comments = new ArrayList<>();
+    @JsonBackReference
+    @ManyToMany(mappedBy = "tracks", fetch = FetchType.LAZY)
+    List<Playlist> playlists = new ArrayList<>();
+
 }
+

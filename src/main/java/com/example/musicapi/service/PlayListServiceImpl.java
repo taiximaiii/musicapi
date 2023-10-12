@@ -1,8 +1,10 @@
 package com.example.musicapi.service;
 
 import com.example.musicapi.model.Playlist;
+import com.example.musicapi.model.Track;
 import com.example.musicapi.model.User;
 import com.example.musicapi.repository.PlaylistRepository;
+import com.example.musicapi.repository.TrackRepository;
 import com.example.musicapi.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +19,8 @@ public class PlayListServiceImpl implements PlayListService{
     private PlaylistRepository playlistRepository;
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private TrackRepository trackRepository;
 
     @Override
     public Playlist savePlaylist(Playlist playlist,Long userId){
@@ -36,4 +40,33 @@ public class PlayListServiceImpl implements PlayListService{
     public Playlist findByName(String name){
         return playlistRepository.findByName(name);
     }
+    @Override
+    public void addTracktoPlaylist(Long trackId,Long playlistId){
+        Track track = trackRepository.findById(trackId).orElse(null);
+        Playlist playlist = playlistRepository.findById(playlistId).orElse(null);
+        playlist.addTrack(track);
+        playlistRepository.save(playlist);
+    }
+    @Override
+    public boolean checkIfTrackExistsInPlaylist( Long trackId,Long playlistId) {
+        Playlist playlist = playlistRepository.findById(playlistId).orElse(null);
+
+        if (playlist == null) {
+            return false;
+        }
+        return playlist.getTracks().stream().anyMatch(track -> track.getId().equals(trackId));
+    }
+    @Override
+    public void removeTrackfromPlaylist(Long trackId,Long playlistId){
+        Track track = trackRepository.findById(trackId).orElse(null);
+        Playlist playlist = playlistRepository.findById(playlistId).orElse(null);
+        playlist.removeTrack(track);
+        playlistRepository.save(playlist);
+    }
+    @Override
+    public List<Track> getTracksInPlaylist(Long playlistId) {
+        Playlist playlist = playlistRepository.findById(playlistId).orElse(null);
+        return playlist.getTracks();
+    }
+
 }
