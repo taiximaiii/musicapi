@@ -19,7 +19,11 @@ public class PlayListController {
     private PlayListService playListService;
 
     @PostMapping("/create")
-    public ResponseEntity<?> createPlaylist(@RequestBody Playlist playlist, @AuthenticationPrincipal UserPrincipal userPrincipal){
+    public ResponseEntity<?> createPlaylist(@RequestParam("name") String name,@RequestParam("description") String description,
+                                            @AuthenticationPrincipal UserPrincipal userPrincipal){
+        Playlist playlist = new Playlist();
+        playlist.setName(name);
+        playlist.setDescription(description);
         Playlist existingPlaylist = playListService.findByName(playlist.getName());
         if (existingPlaylist != null) {
             String errorMessage = "Playlist with the same name already exists.";
