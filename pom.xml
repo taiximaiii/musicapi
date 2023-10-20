@@ -55,7 +55,7 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-gcp-starter</artifactId>
-            <version>1.2.4</version>
+            <version>1.2.4.RELEASE</version>
         </dependency>
 
         <!-- Phụ thuộc Cloud Storage để làm việc với Google Cloud Storage -->
@@ -111,9 +111,9 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+
                 <configuration>
-                    <source>1.8</source> <!-- Phiên bản của JDK của bạn -->
-                    <target>1.8</target>
+
                     <excludes>
                         <exclude>
                             <groupId>org.projectlombok</groupId>
