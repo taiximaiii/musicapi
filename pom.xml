@@ -115,6 +115,7 @@
                 <configuration>
                     <source>1.8</source> <!-- Phiên bản của JDK của bạn -->
                     <target>1.8</target>
+                    <verbose>true</verbose>
                     <excludes>
                         <exclude>
                             <groupId>org.projectlombok</groupId>
