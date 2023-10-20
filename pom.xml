@@ -112,8 +112,6 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <source>1.8</source> <!-- Phiên bản của JDK của bạn -->
-                    <target>1.8</target>
                     <excludes>
                         <exclude>
                             <groupId>org.projectlombok</groupId>
