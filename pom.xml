@@ -113,11 +113,13 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.11.0</version>
                 <configuration>
-                    <source>1.8</source> <!-- Phiên bản của JDK của bạn -->
-                    <target>1.8</target>
-                    <verbose>true</verbose>
+
                     <excludes>
                         <exclude>
+
+                                <exclude>path/to/excluded/file.java</exclude>
+                                <exclude>path/to/another/excluded/file.java</exclude>
+
                             <groupId>org.projectlombok</groupId>
                             <artifactId>lombok</artifactId>
                         </exclude>
