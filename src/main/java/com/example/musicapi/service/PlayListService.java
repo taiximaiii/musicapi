@@ -13,5 +13,4 @@ public interface PlayListService {
     boolean checkIfTrackExistsInPlaylist(Long trackId,Long playlistId);
     void removeTrackfromPlaylist(Long trackId,Long playlistId);
     List<Track> getTracksInPlaylist(Long playlistId);
-    void deletePlaylist(Long playlistId);
 }

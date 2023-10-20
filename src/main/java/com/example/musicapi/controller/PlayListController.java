@@ -19,10 +19,7 @@ public class PlayListController {
     private PlayListService playListService;
 
     @PostMapping("/create")
-    public ResponseEntity<?> createPlaylist(@RequestParam("name") String name,@RequestParam("description") String description, @AuthenticationPrincipal UserPrincipal userPrincipal){
-        Playlist playlist = new Playlist();
-        playlist.setName(name);
-        playlist.setDescription(description);
+    public ResponseEntity<?> createPlaylist(@RequestBody Playlist playlist, @AuthenticationPrincipal UserPrincipal userPrincipal){
         Playlist existingPlaylist = playListService.findByName(playlist.getName());
         if (existingPlaylist != null) {
             String errorMessage = "Playlist with the same name already exists.";
@@ -31,7 +28,7 @@ public class PlayListController {
 
         return new ResponseEntity<>(playListService.savePlaylist(playlist,userPrincipal.getId()), HttpStatus.OK);
     }
-    @GetMapping("/all")
+    @GetMapping
     public ResponseEntity<?> getAllPlayListbyUser(@AuthenticationPrincipal UserPrincipal userPrincipal){
         return new ResponseEntity<>(playListService.getAllPlayListbyUser(userPrincipal.getId()),HttpStatus.OK);
     }
@@ -62,10 +59,5 @@ public class PlayListController {
     public ResponseEntity<?> getTracksInPlaylist( @PathVariable Long playlistId){
         List<Track> tracks = playListService.getTracksInPlaylist(playlistId);
         return new ResponseEntity<>(tracks,HttpStatus.OK);
-    }
-    @DeleteMapping("/delete")
-    public ResponseEntity<?> deletePlaylist(@RequestParam(name = "playlistId") Long playlistId){
-        playListService.deletePlaylist(playlistId);
-        return new ResponseEntity<>("delete success",HttpStatus.OK);
     }
 }
