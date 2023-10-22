@@ -33,6 +33,6 @@ public class CommentServiceImpl implements CommentService{
     }
     @Override
     public List<Comment> getCommentInTrack(Long trackId){
-        return getCommentInTrack(trackId);
+        return commentRepository.getCommentInTrack(trackId);
     }
 }
