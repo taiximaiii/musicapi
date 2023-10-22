@@ -68,5 +68,8 @@ public class PlayListServiceImpl implements PlayListService{
         Playlist playlist = playlistRepository.findById(playlistId).orElse(null);
         return playlist.getTracks();
     }
-
+    @Override
+    public void deletePlaylist(Long playlistId){
+        playlistRepository.deleteById(playlistId);
+    }
 }

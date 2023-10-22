@@ -64,4 +64,10 @@ public class PlayListController {
         List<Track> tracks = playListService.getTracksInPlaylist(playlistId);
         return new ResponseEntity<>(tracks,HttpStatus.OK);
     }
+    @DeleteMapping("/delete/{playlistId}")
+    public ResponseEntity<?> deletePlaylist(@PathVariable Long playlistId){
+        playListService.deletePlaylist(playlistId);
+        return new ResponseEntity<>("delete success",HttpStatus.OK);
+    }
+
 }
