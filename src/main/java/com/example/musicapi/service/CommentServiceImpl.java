@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Service
@@ -23,7 +24,9 @@ public class CommentServiceImpl implements CommentService{
     @Override
     public Comment saveComment(String content,Long trackId,Long userId){
         Comment comment = new Comment();
-        comment.setTimestamp(LocalDateTime.now());
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss dd/MM/yyyy");
+        String formattedTimestamp = LocalDateTime.now().format(formatter);
+        comment.setTimestamp(formattedTimestamp);
         User user = userRepository.findById(userId).orElse(null);
         Track track = trackRepository.findById(trackId).orElse(null);
         comment.setUser(user);
