@@ -28,9 +28,7 @@ public class CommentServiceImpl implements CommentService{
         Comment comment = new Comment();
         ZoneId vietnamZone = ZoneId.of("Asia/Ho_Chi_Minh");
         ZonedDateTime now = ZonedDateTime.now(vietnamZone);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss dd/MM/yyyy");
-        String formattedTimestamp = now.format(formatter);
-        comment.setTimestamp(formattedTimestamp);
+        comment.setTimestamp(now.toLocalDateTime());
         User user = userRepository.findById(userId).orElse(null);
         Track track = trackRepository.findById(trackId).orElse(null);
         comment.setUser(user);
