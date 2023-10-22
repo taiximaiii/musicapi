@@ -28,7 +28,10 @@ public class CommentServiceImpl implements CommentService{
         Comment comment = new Comment();
         ZoneId vietnamZone = ZoneId.of("Asia/Ho_Chi_Minh");
         ZonedDateTime now = ZonedDateTime.now(vietnamZone);
-        comment.setTimestamp(now.toLocalDateTime());
+        ZonedDateTime vietnamTime = now.withZoneSameInstant(vietnamZone); // Chuyển múi giờ sang Việt Nam
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSSSSS");
+        String formattedTimestamp = vietnamTime.format(formatter);
+        comment.setTimestamp(formattedTimestamp);
         User user = userRepository.findById(userId).orElse(null);
         Track track = trackRepository.findById(trackId).orElse(null);
         comment.setUser(user);
