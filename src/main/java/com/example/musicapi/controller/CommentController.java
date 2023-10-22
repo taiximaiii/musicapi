@@ -18,7 +18,7 @@ public class CommentController {
     private CommentService commentService;
 
     @PostMapping("/add")
-    public ResponseEntity<?> addComment(@RequestParam("content") String content, @AuthenticationPrincipal UserPrincipal userPrincipal,Long trackId){
+    public ResponseEntity<?> addComment(@RequestParam("content") String content, @AuthenticationPrincipal UserPrincipal userPrincipal,@RequestParam("trackId") Long trackId){
         return new ResponseEntity<>(commentService.saveComment(content,trackId, userPrincipal.getId()), HttpStatus.CREATED);
     }
 }
