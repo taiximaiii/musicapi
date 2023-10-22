@@ -33,7 +33,8 @@ public class SecurityConfig {
             "/api/v1/artist/**",
             "/api/v1/album/**",
             "/api/v1/track/**",
-            "/api/v1/playlist/**"
+            "/api/v1/playlist/**",
+            "/api/v1/comment/**"
     };
 
     private static final String[] UN_SECURED_URLs = {
