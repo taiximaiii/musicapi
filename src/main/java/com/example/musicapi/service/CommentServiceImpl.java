@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
@@ -24,8 +26,10 @@ public class CommentServiceImpl implements CommentService{
     @Override
     public Comment saveComment(String content,Long trackId,Long userId){
         Comment comment = new Comment();
+        ZoneId vietnamZone = ZoneId.of("Asia/Ho_Chi_Minh");
+        ZonedDateTime now = ZonedDateTime.now(vietnamZone);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss dd/MM/yyyy");
-        String formattedTimestamp = LocalDateTime.now().format(formatter);
+        String formattedTimestamp = now.format(formatter);
         comment.setTimestamp(formattedTimestamp);
         User user = userRepository.findById(userId).orElse(null);
         Track track = trackRepository.findById(trackId).orElse(null);
