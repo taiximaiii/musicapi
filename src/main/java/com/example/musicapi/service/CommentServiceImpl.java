@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 public class CommentServiceImpl implements CommentService{
@@ -29,5 +30,9 @@ public class CommentServiceImpl implements CommentService{
         comment.setTrack(track);
         comment.setContent(content);
         return commentRepository.save(comment);
+    }
+    @Override
+    public List<Comment> getCommentInTrack(Long trackId){
+        return getCommentInTrack(trackId);
     }
 }
