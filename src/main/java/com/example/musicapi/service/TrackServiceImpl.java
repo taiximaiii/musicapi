@@ -15,6 +15,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -27,6 +28,9 @@ public class TrackServiceImpl implements TrackService{
     public List<TrackResponse> getAllTrack() {
         List<Track> tracks = trackRepository.findAll();
         List<TrackResponse> trackResponses = new ArrayList<>();
+
+        // Sắp xếp danh sách bài hát theo tiêu đề (title) abc
+        Collections.sort(tracks, (track1, track2) -> track1.getTitle().compareTo(track2.getTitle()));
 
         for (Track track : tracks) {
             TrackResponse trackResponse = new TrackResponse(
