@@ -36,4 +36,8 @@ public class AlbumServiceImpl implements AlbumService{
         }
         return Collections.emptyList();
     }
+    @Override
+    public List<Album> searchByTitle(String keyword){
+       return albumRepository.searchAlbumByTitle(keyword);
+    }
 }

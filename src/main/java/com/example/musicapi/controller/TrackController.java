@@ -70,4 +70,8 @@ public class TrackController {
         trackService.deleteTrack(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+    @GetMapping("/search")
+    public ResponseEntity<?> searchTrack(@RequestParam("keyword") String keyword){
+        return new ResponseEntity<>(trackService.searchTrackByTitle(keyword),HttpStatus.OK);
+    }
 }

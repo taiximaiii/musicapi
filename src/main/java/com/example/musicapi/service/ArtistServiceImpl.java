@@ -50,4 +50,8 @@ public class ArtistServiceImpl implements ArtistService{
         }
         return Collections.emptyList();
     }
+    @Override
+    public List<Artist> searchByName(String keyword){
+        return artistRepository.searchArtistByName(keyword);
+    }
 }

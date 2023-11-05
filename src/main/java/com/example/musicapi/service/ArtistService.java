@@ -10,4 +10,5 @@ public interface ArtistService {
     Artist saveArtist(Artist artist);
     Artist findbyName(String name);
     List<TrackResponse> getAllTracksOfArtist(Long ArtistId);
+    List<Artist> searchByName(String keyword);
 }

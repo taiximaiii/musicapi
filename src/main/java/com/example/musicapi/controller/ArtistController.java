@@ -42,4 +42,8 @@ public class ArtistController {
     public ResponseEntity<?> getAllTracksOfArtist(@PathVariable Long artistId){
         return new ResponseEntity<>(artistService.getAllTracksOfArtist(artistId),HttpStatus.OK);
     }
+    @GetMapping("/search")
+    public ResponseEntity<?> searchArtist(@RequestParam("keyword") String keyword){
+        return new ResponseEntity<>(artistService.searchByName(keyword),HttpStatus.OK);
+    }
 }

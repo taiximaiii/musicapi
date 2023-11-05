@@ -6,6 +6,7 @@ import com.example.musicapi.service.AlbumService;
 import com.example.musicapi.service.ArtistService;
 import com.example.musicapi.service.ImageUploadService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -52,5 +53,10 @@ public class AlbumController {
     public ResponseEntity<?> getAllTracks(@PathVariable Long albumId) {
         List<Track> tracks = albumService.getAllTracksInAlbum(albumId);
         return new ResponseEntity<>(tracks, HttpStatus.OK);
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<?> searchAlbum(@RequestParam("keyword") String keyword){
+        return new ResponseEntity<>(albumService.searchByTitle(keyword),HttpStatus.OK);
     }
 }

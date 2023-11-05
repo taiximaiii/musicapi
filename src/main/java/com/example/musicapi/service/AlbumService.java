@@ -10,4 +10,5 @@ public interface AlbumService {
     Album saveAlbum(Album album);
     Album findbyName(String name);
     List<Track> getAllTracksInAlbum(Long albumId);
+    List<Album> searchByTitle(String keyword);
 }

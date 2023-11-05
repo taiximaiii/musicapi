@@ -9,4 +9,5 @@ public interface TrackService {
     List<TrackResponse> getAllTrack();
     Track saveTrack( Track track);
     void deleteTrack(Long id);
+    List<TrackResponse> searchTrackByTitle(String keyword);
 }
