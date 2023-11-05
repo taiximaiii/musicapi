@@ -27,6 +27,5 @@ public class Album {
     private Artist artist;
 
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "album",orphanRemoval = true)
-    @JsonIgnore
     private List<Track> tracks = new ArrayList<>();
 }
