@@ -29,6 +29,9 @@ public class TrackServiceImpl implements TrackService{
         List<Track> tracks = trackRepository.findAll();
         List<TrackResponse> trackResponses = new ArrayList<>();
 
+        // Sắp xếp danh sách bài hát theo tiêu đề (title) abc
+        Collections.sort(tracks, (track1, track2) -> track1.getTitle().compareTo(track2.getTitle()));
+
         for (Track track : tracks) {
             TrackResponse trackResponse = new TrackResponse(
                     track.getId(),
