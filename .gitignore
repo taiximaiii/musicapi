@@ -19,7 +19,8 @@ target/
 *.iml
 *.ipr
 system.properties
-src/main/resources
+src/main/resources/serviceAccountKey.json
+src/main/resources/application.properties
 
 ### NetBeans ###
 /nbproject/private/
