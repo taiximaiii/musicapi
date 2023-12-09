@@ -14,6 +14,8 @@ public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "`content`", nullable = false)
+    @Lob
     private String content;
     private String timestamp;
 

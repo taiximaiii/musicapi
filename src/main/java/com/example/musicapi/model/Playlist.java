@@ -19,6 +19,8 @@ public class Playlist {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    @Column(name="`description`",nullable = false)
+    @Lob
     private String description;
 
     @JsonIgnore
