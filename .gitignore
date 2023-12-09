@@ -18,9 +18,7 @@ target/
 *.iws
 *.iml
 *.ipr
-/system.properties
-/src/main/resources/serviceAccountKey.json
-/src/main/resources/application.properties
+
 
 ### NetBeans ###
 /nbproject/private/
@@ -34,3 +32,6 @@ build/
 
 ### VS Code ###
 .vscode/
+/system.properties
+/src/main/resources/serviceAccountKey.json
+/src/main/resources/application.properties
