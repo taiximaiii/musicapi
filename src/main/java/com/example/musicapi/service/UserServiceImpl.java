@@ -26,4 +26,12 @@ public class UserServiceImpl implements UserService{
     public Optional<User> findByEmail(String email){
         return userRepository.findByEmail(email);
     }
+
+    @Override
+    public User updateUser(Long id, User user) {
+        User old = userRepository.findById(id).orElse(null);
+        old.setImageUrl(user.getImageUrl());
+        userRepository.save(old);
+        return old;
+    }
 }
